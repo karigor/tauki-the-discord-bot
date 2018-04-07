@@ -1,4 +1,5 @@
 from discord import Client, Message
+
 from chatter.chat_bot import *
 
 bot = create_chat_bot(name='Tauki Tahmid')
@@ -20,5 +21,5 @@ async def on_message(message: Message):
     if message.content.startswith("!tauki"):
         msg_content = message.content.replace("!tauki", "")
         print('{} says: {}'.format(message.author, msg_content))
-        bot_response = bot.get_response(input_item=msg_content, conversation_id=1).serialize().get('text')
+        bot_response = bot.get_response(input_item=msg_content).serialize().get('text')
         await client.send_message(message.channel, bot_response)
